@@ -1,0 +1,23 @@
+l=list(map(int,input().split(",")))
+k=int(input())
+dic=[]
+l.sort()
+unfairness=999
+for i in range(len(l)-k+1):
+    lis=l[i:i+k]
+    minval=min(lis)
+    maxval=max(lis)
+    current_unfairness=maxval-minval
+    if current_unfairness==unfairness:
+        pass
+    elif current_unfairness<unfairness:
+        if dic:
+            dic.pop()
+            dic.append(l[i:i+k])
+        else:
+            dic.append(l[i:i+k])
+        unfairness=current_unfairness
+    
+for i in dic:
+    for j in i:
+        print(j,end=" ")
